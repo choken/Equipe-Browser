@@ -10,19 +10,28 @@ class MeetingsController < ApplicationController
     sess.base_url = "http://online.equipe.com/"
     #http://online.equipe.com/api/v1/meetings.json
     response = sess.get "api/v1/meetings.json"
-    @meetings = JSON.parse response
+    @meetings = JSON.parse response.body
 
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @meetings }
+      format.json { render :json => @meetings }
+      format.atom { render :json => @meetings.map{|i| i["name"] }}
     end
   end
 
   # GET /meetings/1
   # GET /meetings/1.xml
   def show
-    @meeting = Meeting.find(params[:id])
+    #@meetings = Meeting.all
+    @current = "Meetings"
+    
+    sess = Patron::Session.new
+    sess.base_url = "http://online.equipe.com/"
+    #http://online.equipe.com/api/v1/meetings.json
+    response = sess.get "api/v1/meetings/" + params[:id].to_s + ".json"
+    @meeting = JSON.parse response.body
 
     respond_to do |format|
       format.html # show.html.erb

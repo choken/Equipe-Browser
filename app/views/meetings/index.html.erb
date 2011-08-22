@@ -1,17 +1,33 @@
 <h1>Listing meetings</h1>
 
 <table>
-  <tr>
+  <tr class="header">
+    <th>#</th>
+    <th>Name</th>
+    <th>Type of Meeting</th>
+    <th>Start</th>
+    <th>-</th>
+    <th>End</th>
+    <th></th>
+    <!--//>
     <th></th>
     <th></th>
-    <th></th>
+    //-->
   </tr>
 
 <% @meetings.each do |meeting| %>
   <tr>
-    <td><%= link_to 'Show', meeting %></td>
+    <td><%= meeting["id"] %></td>
+    <td><%= meeting["display_name"] %></td>
+    <td><%= meeting["type_of_meeting"] %></td>
+    <td><%= meeting["start_on"] %></td>
+    <td>--</td>
+    <td><%= meeting["end_on"] %></td>
+    <td><%= link_to 'Show', 'meetings/'+meeting["id"].to_s %></td>
+    <!--//
     <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
     <td><%= link_to 'Destroy', meeting, :confirm => 'Are you sure?', :method => :delete %></td>
+    //-->
   </tr>
 <% end %>
 </table>

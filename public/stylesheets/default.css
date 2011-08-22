@@ -35,3 +35,9 @@ ul.menu_tabs li a:hover {
 .floatfix {
 	clear: both;
 }
+
+tr.header th {
+	border-bottom-width: 1px;
+	border-color: black;
+	border-style: solid;
+}

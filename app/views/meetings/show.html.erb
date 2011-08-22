@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<% @meeting.each do |key,value| %>
+
+<p>
+  <b><%= key.to_s.humanize %>:</b>
+  <%= value.to_s %>
+</p>
+<% end %>
 
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
 <%= link_to 'Back', meetings_path %>
