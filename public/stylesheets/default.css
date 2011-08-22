@@ -1,0 +1,37 @@
+ul.menu_tabs {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.menu_tabs li {
+  float: left;
+  padding: 0;
+  margin: 0;
+  padding-top: 0;
+  background: url(/images/tab_right.png) no-repeat 100% -5%;
+  margin-right: 1px;
+}
+
+ul.menu_tabs li a {
+  display: block;
+  padding: 0px 10px;
+  color: #fff;
+  text-decoration: none;
+  background: url(/images/tab_left.png) no-repeat 0% -5%;
+}
+
+ul.menu_tabs li.current {
+  background-position: 100% 0%;
+}
+
+ul.menu_tabs li.current a {
+  background-position: 0% 0%;
+}
+
+ul.menu_tabs li a:hover {
+  color: #ff0;
+}
+.floatfix {
+	clear: both;
+}

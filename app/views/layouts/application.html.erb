@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EquipeBrowser</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <h1>Equipe browser</h1>
+  <%- tab_menu "menu_tabs", :current_tab => @current_tab do |t| -%>
+    <%= t.tab "Home", "/" %>
+    <%= t.tab "Meetings", "/meetings" %>
+    <%= t.tab "Page2", "/test" %>
+    <%= t.tab "About Equipe Browser", "/about" %>
+  <%- end -%>
+  <hr class="floatfix"/>
+  
+<%= yield %>
+
+</body>
+</html>
