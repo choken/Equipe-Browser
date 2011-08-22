@@ -4,7 +4,7 @@ class MeetingsController < ApplicationController
   # GET /meetings.xml
   def index
     #@meetings = Meeting.all
-    @current = "Meetings"
+    @current_tab = "Meetings"
     
     sess = Patron::Session.new
     sess.base_url = "http://online.equipe.com/"
@@ -25,7 +25,7 @@ class MeetingsController < ApplicationController
   # GET /meetings/1.xml
   def show
     #@meetings = Meeting.all
-    @current = "Meetings"
+    @current_tab = "Meetings"
     
     sess = Patron::Session.new
     sess.base_url = "http://online.equipe.com/"
