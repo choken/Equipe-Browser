@@ -9,7 +9,7 @@ class MeetingsController < ApplicationController
     sess = Patron::Session.new
     sess.base_url = "http://online.equipe.com/"
     #http://online.equipe.com/api/v1/meetings.json
-    response = sess.get "api/v1/meetings.json"
+    response = sess.get "api/v1/meetings.json" #+"?group=svrf"
     @meetings = JSON.parse response.body
 
 
@@ -38,6 +38,89 @@ class MeetingsController < ApplicationController
       format.xml  { render :xml => @meeting }
     end
   end
+  
+  # GET /meetings/horses/1
+  # GET /meetings/horses/1.xml
+  def horses
+    @current_tab = "Meetings"
+    
+    sess = Patron::Session.new
+    sess.base_url = "http://online.equipe.com/"
+    #http://online.equipe.com/api/v1/meetings.json
+    response = sess.get "api/v1/meetings/" + params[:id].to_s + "/horses.json"
+    @meetings = JSON.parse response.body
+    
+    
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @meeting }
+    end
+    
+  end
+  
+  
+  # GET /meetings/riders/1
+  # GET /meetings/riders/1.xml
+  def riders
+    @current_tab = "Meetings"
+    
+    sess = Patron::Session.new
+    sess.base_url = "http://online.equipe.com/"
+    #http://online.equipe.com/api/v1/meetings.json
+    response = sess.get "api/v1/meetings/" + params[:id].to_s + "/riders.json"
+    @meetings = JSON.parse response.body
+    
+    
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @meetings }
+    end
+    
+  end
+  
+  # GET /meetings/horses/1/1
+  # GET /meetings/horses/1/1.xml
+  def show_horse
+    #@meetings = Meeting.all
+    @current_tab = "Meetings"
+    
+    sess = Patron::Session.new
+    sess.base_url = "http://online.equipe.com/"
+    #http://online.equipe.com/api/v1/meetings.json
+    response = sess.get "api/v1/meetings/" + params[:meeting_id].to_s + "/horses.json"
+    @meetings = JSON.parse response.body
+    @meeting = @meetings.select{|m| m["id"] = params[:id]}
+    @meeting = @meeting.first if @meeting.size > 0
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @meeting }
+    end
+  end
+  
+  
+  # GET /meetings/show_rider/1
+  # GET /meetings/show_rider/1.xml
+  def show_rider
+    #@meetings = Meeting.all
+    @current_tab = "Meetings"
+    
+    sess = Patron::Session.new
+    sess.base_url = "http://online.equipe.com/"
+    #http://online.equipe.com/api/v1/meetings.json
+    response = sess.get "api/v1/riders/" + params[:id].to_s + ".json"
+    @meeting = JSON.parse response.body
+
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @meeting }
+    end
+  end
+  
+  #----------------------------
 
   # GET /meetings/new
   # GET /meetings/new.xml

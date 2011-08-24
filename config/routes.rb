@@ -1,4 +1,11 @@
 EquipeBrowser::Application.routes.draw do
+  match 'clubs/meetings/:id(.:format)' => 'clubs#meetings'
+  match 'clubs/starts/:id(.:format)' => 'clubs#starts'
+  resources :clubs
+
+  match 'meetings/show_horse/:meeting_id/:id(.:format)' => 'meetings#show_horse'
+ # match 'meetings/riders/:id(.:format)' => 'meetings#riders'
+
   resources :meetings
 
   resources :users
@@ -53,7 +60,7 @@ EquipeBrowser::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
-  root :to => "home#index"
+  root :to => "home#about"
   match 'test(.:format)' => 'home#test'
 
 

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index 
-    @current_tab = "Home"
+    @current_tab = "About Equipe Browser"
   end
   
   def test

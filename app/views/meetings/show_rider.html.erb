@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Details of rider #<%= params[:id].to_s %></h1>
+
+<% @meeting.each do |key,value| %>
+
+<p>
+  <b><%= key.to_s.humanize %>:</b>
+  <%- if key != "starts" -%>
+  <%= value.to_s %>
+  <%- else -%>
+  	<table>
+  <tr class="header">
+    <th>#</th>
+    <th>Horse</th>
+    <th>Club</th>
+    <th>Result</th>
+    <th></th>
+    <th></th>
+
+  </tr>
+
+<% value.each do |val_item| %>
+  <tr>
+    <td><%= val_item["id"] %></td>
+    <td><%= val_item["horse_name"] %></td>
+    <td><%= val_item["club_name"] + "(" + val_item["club_id"].to_s + ")" %></td>
+    <td><%= val_item["result_preview"] %></td>
+    <td><%= link_to 'Show horse', '/meetings/show_horse/' + val_item["meeting_id"].to_s + "/"+ val_item["horse_id"].to_s %></td>
+    <td><%= link_to 'Show club', '/clubs/meetings/' + val_item["club_id"].to_s + ".xml" %></td>
+
+  </tr>
+<% end %>
+</table>
+
+  <%- end-%>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+<%= link_to 'Back', meetings_path %>

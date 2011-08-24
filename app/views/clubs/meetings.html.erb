@@ -1,4 +1,4 @@
-<h1>Listing meetings</h1>
+<h1>Listing meetings for club #<%= params[:id]%></h1>
 
 <table>
   <tr class="header">
@@ -9,8 +9,10 @@
     <th>-</th>
     <th>End</th>
     <th></th>
+    <!--//>
     <th></th>
     <th></th>
+    //-->
   </tr>
 
 <% @meetings.each do |meeting| %>
@@ -34,4 +36,4 @@
 
 <br />
 
-<%= link_to 'New Meeting', new_meeting_path %>
+<% link_to 'New Meeting', new_meeting_path %>

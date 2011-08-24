@@ -1,0 +1,35 @@
+<h1>Listing starts for club #<%= params[:id]%></h1>
+
+<table>
+  <tr class="header">
+    <th>#</th>
+    <th>Rider</th>
+    <th>Horse</th>
+    <th>Club</th>
+    <th>Meeting</th>
+    <th>Start no</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @starts.each do |start| %>
+  <tr>
+    <td><%= start["id"] %></td>
+    <td><%= start["rider_name"] %></td>
+    <td><%= start["horse_name"] %></td>
+    <td><%= start["club_name"] %></td>
+    <td><%= start["meeting_name"] %></td>
+    <td><%= start["start_no"] %></td>
+    <td><%= start["position"] %></td>
+    <td><%= link_to 'Show', '/club/show_start/'+ params[:id].to_s + '/'+start["id"].to_s %></td>
+    <td><%= link_to 'Show Horse', '/meetings/show_horse/'+start["meeting_id"].to_s + '/' +start["horse_id"].to_s %></td>
+    <td><%= link_to 'Show Rider', '/meetings/show_rider/'+start["rider_id"].to_s %></td>
+    <td><%= link_to 'Show Meeting', '/meetings/'+start["meeting_id"].to_s %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

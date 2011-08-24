@@ -1,0 +1,35 @@
+<h1>Listing of horses for meeting #<%= params[:id].to_s %></h1>
+
+<table>
+  <tr class="header">
+    <th>#</th>
+    <th>Name</th>
+    <th>Breed</th>
+    <th>Color</th>
+    <th>Owner</th>
+    <th></th>
+    <!--//>
+    <th></th>
+    <th></th>
+    //-->
+  </tr>
+
+<% @meetings.each do |meeting| %>
+  <tr>
+    <td><%= meeting["id"] %></td>
+    <td><%= meeting["name"] %></td>
+    <td><%= meeting["breed"] %></td>
+    <td><%= meeting["color"] %></td>
+    <td><%= meeting["owner"] %></td>
+    <td><%= link_to 'Show', '/meetings/show_horse/'+meeting["meeting_id"].to_s + '/' + meeting["id"].to_s %></td>
+    <!--//
+    <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
+    <td><%= link_to 'Destroy', meeting, :confirm => 'Are you sure?', :method => :delete %></td>
+    //-->
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Back', meetings_path %>

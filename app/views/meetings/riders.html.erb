@@ -1,0 +1,23 @@
+<h1>Listing of riders for meeting #<%= params[:id].to_s %></h1>
+
+<table>
+  <tr class="header">
+    <th>#</th>
+    <th>Name</th>
+    <th>Country</th>
+    <th></th>
+  </tr>
+
+<% @meetings.each do |meeting| %>
+  <tr>
+    <td><%= meeting["id"] %></td>
+    <td><%= meeting["name"] %></td>
+    <td><%= meeting["country"] %></td>
+    <td><%= link_to 'Show', '/meetings/show_rider/' + meeting["id"].to_s %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Back', meetings_path %>
