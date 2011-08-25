@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Details of start #<%= params[:id].to_s %></h1>
+
+<% @start.each do |key,value| %>
+
+<p>
+  <b><%= key.to_s.humanize %>:</b>
+  <%= value.to_s %>
+</p>
+<% end %>
+
+
+<%= link_to 'Back', '/clubs/starts/'+ params[:club_id] %>

@@ -1,4 +1,5 @@
-<h1>Listing clubs</h1>
+<h2>Club search</h2>
+<p>Enter a SvRF number (i.e. 235), and click either on 'meetings' or 'starts', whatever you want the listings of meetings for a specific club or its starts.</p>
 
 <table>
   <tr>
@@ -21,4 +22,4 @@
 <% link_to 'New Club', new_club_path %>
 <form><label for="svrf">SvRF number</label><input type="text" name="svrf" value="" id="svrf"/>
 <input type="button" name="search1" value="meetings" id="search1" onclick="location='/clubs/meetings/'+this.form.svrf.value"/>
-<input type="button" name="search2" value="starts" id="search2" onclick="location='/clubs/starts/'+this.form.svrf.value"/></form>
+<input type="button" name="search2" value="starts" id="search2" onclick="location='/clubs/starts/'+this.form.svrf.value+'.xml'"/></form>

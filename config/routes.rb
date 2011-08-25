@@ -1,14 +1,13 @@
 EquipeBrowser::Application.routes.draw do
   match 'clubs/meetings/:id(.:format)' => 'clubs#meetings'
   match 'clubs/starts/:id(.:format)' => 'clubs#starts'
+  match 'clubs/show_start/:club_id/:id(.:format)' => 'clubs#show_start'
   resources :clubs
 
   match 'meetings/show_horse/:meeting_id/:id(.:format)' => 'meetings#show_horse'
  # match 'meetings/riders/:id(.:format)' => 'meetings#riders'
 
   resources :meetings
-
-  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -61,7 +60,7 @@ EquipeBrowser::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
   root :to => "home#about"
-  match 'test(.:format)' => 'home#test'
+  match 'class_sections(.:format)' => 'home#class_sections'
 
 
   # See how all your routes lay out with "rake routes"

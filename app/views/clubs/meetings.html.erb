@@ -1,4 +1,6 @@
-<h1>Listing meetings for club #<%= params[:id]%></h1>
+<h2>Listing meetings for club #<%= params[:id]%></h2>
+<p>Browse the meetings. Use link 'show' to get more details of a meeting. 'Horses' and 'Riders' redirects to lists of participated horses and riders</p>
+<br />
 
 <table>
   <tr class="header">
@@ -9,10 +11,8 @@
     <th>-</th>
     <th>End</th>
     <th></th>
-    <!--//>
     <th></th>
     <th></th>
-    //-->
   </tr>
 
 <% @meetings.each do |meeting| %>
@@ -36,4 +36,4 @@
 
 <br />
 
-<% link_to 'New Meeting', new_meeting_path %>
+<%= link_to 'Back', clubs_path %>

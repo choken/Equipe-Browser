@@ -2,7 +2,8 @@ class ClubsController < ApplicationController
   # GET /clubs
   # GET /clubs.xml
   def index
-    @clubs = Club.all
+    #@clubs = Club.all
+    @clubs = []
 
     respond_to do |format|
       format.html # index.html.erb
@@ -39,7 +40,7 @@ class ClubsController < ApplicationController
     
     sess = Patron::Session.new
     sess.base_url = "http://online.equipe.com/"
-    #http://online.equipe.com/api/v1/clubs/####/starts.json
+    #http://online.equipe.com/api/v1/clubs/235/starts.json
     response = sess.get "api/v1/clubs/" + params[:id].to_s + "/starts.json"
     @starts = JSON.parse response.body
     
@@ -52,11 +53,35 @@ class ClubsController < ApplicationController
     
   end
 
+  # GET /clubs/show_start/1/1
+  # GET /clubs/show_start/1/1.xml
+  def show_start
+    #@meetings = Meeting.all
+    @current_tab = "Clubs"
+    
+    sess = Patron::Session.new
+    sess.base_url = "http://online.equipe.com/"
+    #http://online.equipe.com/api/v1/clubs/1/starts.json
+    response = sess.get "api/v1/clubs/" + params[:club_id].to_s + "/starts.json"
+    @starts = JSON.parse response.body
+    @start = @starts.select{|m| m["id"] = params[:id]}
+    @start = @start.first if @start.size > 0
+
+    respond_to do |format|
+      format.html # show_start.html.erb
+      format.xml  { render :xml => @start }
+    end
+  end
+  
+
+
+#-----------------------------------
+=begin
 
   # GET /clubs/1
   # GET /clubs/1.xml
   def show
-    @club = Club.find(params[:id])
+    @club = nil #Club.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -123,4 +148,5 @@ class ClubsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+=end
 end

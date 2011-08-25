@@ -13,6 +13,11 @@ class HomeController < ApplicationController
     end
   end
   
+  def class_sections
+    @current_tab = "Class Sections"
+  end
+  
+  
   def about
     @current_tab = "About Equipe Browser"
   end
