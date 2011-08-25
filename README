@@ -9,4 +9,12 @@ As the name implies, it's a browser.
 The project was started as a simple assignment to Equipe.com.
 
 
+Do not forget to call the following commands before starting the webserver.
+rake db:create
+rake db:migrate
+
+At the moment it is just a dummy database, but it might be populated later on.
+
+
+
 Kjell-Åke Lundblad aka ChOken
