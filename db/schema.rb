@@ -13,6 +13,14 @@
 
 ActiveRecord::Schema.define(:version => 20110824161323) do
 
+  create_table "busers", :force => true do |t|
+    t.string   "name"
+    t.text     "bio"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "clubs", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -25,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20110824161323) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
+    t.text     "bio"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
